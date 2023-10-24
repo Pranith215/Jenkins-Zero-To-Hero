@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/Ruchitha24341/Jenkins-Zero-To-Hero.git'
+        //git branch: 'main', url: 'https://github.com/Pranith215/Jenkins-Zero-To-Hero.git'
       }
     }
     stage('Build and Test') {
@@ -48,13 +48,13 @@ pipeline {
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
-            GIT_USER_NAME = "Ruchitha24341"
+            GIT_USER_NAME = "Pranith215"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
-                    git config user.email "ruchithagunda24@gmail.com"
-                    git config user.name "Ruchitha Gunda"
+                    git config user.email "madishettypranith@gmail.com"
+                    git config user.name "Madishetty Pranith Kumar"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
